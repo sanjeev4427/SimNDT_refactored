@@ -1,0 +1,23 @@
+python 2.7.0 does not contain pip and distutil error happens. 
+
+Download python2.7.16 with x86-64 installer. 
+
+C:\Python27\python.exe -m pip install virtualenv
+C:\Python27\Scripts\virtualenv.exe --python=python2.7 envname or add C:\Python27\Scripts\ to the path to recognize pip2 and virtualenv
+
+-create virtual environment
+-check for the python version.
+-install the requirements from the txt files using normal command pip install -r req.txt
+-OpenCL creates problem in installation. Even without OpenCL simulation can be run by selecting cpu from menu and running simulation without interruption. 
+
+Fastest solution by using conda (I installed OpenCL drivers first. I do not know if that helped in easy installation of pyopencl, steps at the end):
+
+1. Hassle free installation of python 2.7 using : conda create -n py27env python=2.7
+2. Install pyopencl using conda (no visual c++ required): conda install -c conda-forge pyopencl. 
+3. Install all the requirements except pyopencl using pip (faster).
+4. Now the GPU will be detected.
+
+Installing OpenCL driver:
+
+1. https://github.com/KhronosGroup/OpenCL-SDK/releases (select penCL-SDK-v2024.10.24-Win-x64.zip)
+2. Extract. open a Command Prompt in the folder having clinfo and type: clinfo.exe

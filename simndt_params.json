@@ -1,0 +1,154 @@
+{
+  "Boundaries": [
+    {
+      "Type": "Absorbing", 
+      "Name": "Top", 
+      "Size": 5.0
+    }, 
+    {
+      "Type": "Absorbing", 
+      "Name": "Bottom", 
+      "Size": 5.0
+    }, 
+    {
+      "Type": "Absorbing", 
+      "Name": "Left", 
+      "Size": 5.0
+    }, 
+    {
+      "Type": "Absorbing", 
+      "Name": "Right", 
+      "Size": 5.0
+    }
+  ], 
+  "Source": {
+    "Pressure": 1, 
+    "Longitudinal": 1, 
+    "Displacement": 0, 
+    "Shear": 0
+  }, 
+  "Materials": [
+    {
+      "C22": 108640000000.0, 
+      "C44": 38700000000.0, 
+      "Name": "aluminium", 
+      "VL": 6319.90320105, 
+      "Label": 0, 
+      "VT": 3771.99432349, 
+      "Damping": 0, 
+      "C12": 31240000000.0, 
+      "C11": 108640000000.0, 
+      "Rho": 2720.0, 
+      "Eta_s": 1e-30, 
+      "Eta_v": 1e-30
+    }, 
+    {
+      "C22": 108640000000.0, 
+      "C44": 38700000000.0, 
+      "Name": "aluminium", 
+      "VL": 6319.90320105, 
+      "Label": 40, 
+      "VT": 3771.99432349, 
+      "Damping": 0, 
+      "C12": 31240000000.0, 
+      "C11": 108640000000.0, 
+      "Rho": 2720.0, 
+      "Eta_s": 1e-30, 
+      "Eta_v": 1e-30
+    }, 
+    {
+      "C22": 77600000000.0, 
+      "C44": 6590000000.0, 
+      "Name": "glass", 
+      "VL": 5560.24591735, 
+      "Label": 80, 
+      "VT": 1620.33885591, 
+      "Damping": 0, 
+      "C12": 64420000000.0, 
+      "C11": 77600000000.0, 
+      "Rho": 2510.0, 
+      "Eta_s": 1e-30, 
+      "Eta_v": 1e-30
+    }, 
+    {
+      "C22": 108640000000.0, 
+      "C44": 38700000000.0, 
+      "Name": "aluminium", 
+      "VL": 6319.90320105, 
+      "Label": 120, 
+      "VT": 3771.99432349, 
+      "Damping": 0, 
+      "C12": 31240000000.0, 
+      "C11": 108640000000.0, 
+      "Rho": 2720.0, 
+      "Eta_s": 1e-30, 
+      "Eta_v": 1e-30
+    }
+  ], 
+  "Transducers": {
+    "SizePixel": 62.0, 
+    "Field": 0, 
+    "PointSource": 0, 
+    "Name": "emisor", 
+    "PZT": 0, 
+    "Size": 20.0, 
+    "Location": "Top", 
+    "Window": 0, 
+    "CenterOffset": 0.0, 
+    "BorderOffset": 0.0
+  }, 
+  "Scenario": {
+    "Width": 100, 
+    "Label": 0, 
+    "Pixel_mm": 10.0, 
+    "Height": 100
+  }, 
+  "Receivers": {
+    "Method": "Trasmission"
+  }, 
+  "Signal": {
+    "Frequency": 500000.0, 
+    "N_Cycles": 1, 
+    "Name": "RaisedCosine", 
+    "Amplitude": 1.0
+  }, 
+  "Simulation": {
+    "PointCycle": 10, 
+    "SimulationTime": 5e-05, 
+    "Order": 2, 
+    "TimeScale": 1.0, 
+    "MaxFreq": 1000000.0
+  }, 
+  "Inspection": {
+    "Name": "Transmission", 
+    "Location": "Top", 
+    "Method": "Transmission"
+  }, 
+  "GeometricObjects": [
+    {
+      "a": 5.0, 
+      "b": 2.0, 
+      "Name": "ellipse", 
+      "Label": 40, 
+      "theta": 40.0, 
+      "y0": 50.0, 
+      "x0": 50.0
+    }, 
+    {
+      "y0": 75.0, 
+      "x0": 25.0, 
+      "r": 5.0, 
+      "Name": "circle", 
+      "Label": 80
+    }, 
+    {
+      "a": 5.0, 
+      "b": 2.0, 
+      "Name": "ellipse", 
+      "Label": 120, 
+      "theta": 40.0, 
+      "y0": 50.0, 
+      "x0": 50.0
+    }
+  ]
+}
