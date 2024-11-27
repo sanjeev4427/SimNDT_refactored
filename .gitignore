@@ -1,0 +1,16 @@
+*.pyc
+*.idea
+build
+dist
+
+# Environments
+.env
+.venv
+envs/
+
+# Project specific
+sim_data/
+project_docs/
+envs/
+
+
