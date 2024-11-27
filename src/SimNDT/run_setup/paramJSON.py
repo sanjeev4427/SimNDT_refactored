@@ -195,7 +195,7 @@ data = OrderedDict({
 })
 
 # use python>= 3.7 to keep the ordered dictionary
-folder_path = r"C:\Users\Kumar\Nextcloud\Work\GUW\sim_ndt\batch_processing_simulator\sim_data\param_json"
+folder_path = r"C:\Users\Kumar\Nextcloud\Work\GUW\sim_ndt\batch_processing_simulator\ParamJSON"
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 save_path = os.path.join(folder_path, "simndt_params_{current_time}.json".format(current_time=current_time))
 with open(save_path, "w") as f:

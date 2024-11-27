@@ -1,5 +1,6 @@
 *.pyc
 *.idea
+.vscode/
 build
 dist
 
@@ -11,6 +12,6 @@ envs/
 # Project specific
 sim_data/
 project_docs/
-envs/
+
 
 
