@@ -153,7 +153,7 @@
   },
   "Snapshot": {
     "Step": 1000,
-    "Save_filepath": "C:\\Users\\Kumar\\Nextcloud\\Work\\GUW\\sim_ndt\\simndt2-main\\simndt2\\saved_simulations\\numpy_Vx_Vy_2",
+    "Save_filepath": "C:\\Users\\Kumar\\Nextcloud\\Work\\GUW\\sim_ndt\\batch_processing_simulator\\sim_data\\saved_simulations\\numpy_Vx_Vy_3",
     "Filename": "numpy",
     "enableFields": true,
     "enableNumPy": true,
@@ -170,6 +170,6 @@
     "sensorSize": 0
   },
   "SimVideo": {
-    "Save_filepath": "C:\\Users\\Kumar\\Nextcloud\\Work\\GUW\\sim_ndt\\simndt2-main\\simndt2\\saved_simulations\\sim_video"
+    "Save_filepath": "C:\\Users\\Kumar\\Nextcloud\\Work\\GUW\\sim_ndt\\batch_processing_simulator\\sim_data\\saved_simulations\\sim_video2"
   }
 }

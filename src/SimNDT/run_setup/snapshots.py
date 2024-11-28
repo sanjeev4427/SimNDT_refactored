@@ -56,7 +56,9 @@ class SnapShots:
           
           FIle_PATH = os.path.join(self.File_path, FILE)
           np.save(FIle_PATH,np.array([Fx,Fy]))
-          print("Fields saved in numpy format at: ", FILE)
+          if int(n / self.Step) == 1:
+            print("Saving Fields in numpy format at: ", self.File_path)
+          print("File saved : ", FILE)
         else:  
           dict = {}
           dict['Vx'] = Fx

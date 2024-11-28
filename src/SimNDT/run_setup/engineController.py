@@ -154,10 +154,13 @@ class EngineController():
                 state = self._run(idx)
                 return state
         elif self.Platform == "Serial":
+            # self.GL = True
             if self.GL:
+                print ("runGLSerial")
                 state = self._runGLSerial(idx)
                 return state
             else:
+                print ("runSerial")
                 state = self._runSerial(idx)
                 return state
 
@@ -165,7 +168,7 @@ class EngineController():
     # @blab+
     def saveOptions(self, step, idx):
 
-        print("Saving output...")
+        
         if (self.SimNDT_FD.n % step == 0):
             value = (self.n / float(self.TimeSteps * self.Times)) * 100
 
@@ -241,52 +244,52 @@ class EngineController():
         step  = 10
         while (self.SimNDT_FD.n < self.TimeSteps):
 
-            if self.parent.StopSimulation:
-                return "Stop"
+            # if self.parent.StopSimulation:
+            #     return "Stop"
 
-            if self.parent.PauseSimulation:
-                while True:
-                    if self.parent.StopSimulation:
-                        return "Stop"
-                    if not self.parent.PauseSimulation:
-                        break
-                    QCoreApplication.processEvents()
+            # if self.parent.PauseSimulation:
+            #     while True:
+            #         if self.parent.StopSimulation:
+            #             return "Stop"
+            #         if not self.parent.PauseSimulation:
+            #             break
+            #         QCoreApplication.processEvents()
 
             self.SimNDT_FD.runSerial()
             self.SimNDT_FD.n +=1
             self.n +=1
 
-            self.saveOptions(step, idx)
+            # self.saveOptions(step, idx)
 
 
 
 
     def _runGL(self, idx):
-
-        DB = self.parent.SimNDT_SnapShots.DB
-        self.parent.GraphicView.setImage(np.float32(self.SimNDT_FD.SV), DB)
+        
+        # DB = self.parent.SimNDT_SnapShots.DB
+        # self.parent.GraphicView.setImage(np.float32(self.SimNDT_FD.SV), DB)
         step  = 50
 
-        if self.IsReceiverPlot:
-            SimulationTime = self.parent.SimNDT_Simulation.SimulationTime
-            sig = self.SimNDT_FD.receiver_signals
-            self.plot = PlotInline()
-            self.plot.init(sig, SimulationTime)
-            self.plot.show()
+        # if self.IsReceiverPlot:
+        #     SimulationTime = self.parent.SimNDT_Simulation.SimulationTime
+        #     sig = self.SimNDT_FD.receiver_signals
+        #     self.plot = PlotInline()
+        #     self.plot.init(sig, SimulationTime)
+        #     self.plot.show()
 
 
         while (self.SimNDT_FD.n < self.TimeSteps):
 
-            if self.parent.StopSimulation:
-                return "Stop"
+            # if self.parent.StopSimulation:
+            #     return "Stop"
 
-            if self.parent.PauseSimulation:
-                while True:
-                    if self.parent.StopSimulation:
-                        return "Stop"
-                    if not self.parent.PauseSimulation:
-                        break
-                    QCoreApplication.processEvents()
+            # if self.parent.PauseSimulation:
+            #     while True:
+            #         if self.parent.StopSimulation:
+            #             return "Stop"
+            #         if not self.parent.PauseSimulation:
+            #             break
+            #         QCoreApplication.processEvents()
 
             self.SimNDT_FD.run()
             self.SimNDT_FD.n+=1
@@ -296,17 +299,17 @@ class EngineController():
 
             if (self.SimNDT_FD.n % step==0):
                 self.SimNDT_FD.runGL()
-                self.parent.GraphicView.updateWithImage(self.SimNDT_FD.SV, self.SimNDT_FD.n*self.SimNDT_FD.dt*1e6)
+                # self.parent.GraphicView.updateWithImage(self.SimNDT_FD.SV, self.SimNDT_FD.n*self.SimNDT_FD.dt*1e6)
 
                 if self.IsReceiverPlot:
                     self.SimNDT_FD.saveOutput()
                     sig = self.SimNDT_FD.receiver_signals[self.SimNDT_FD.n-1,0]
-                    self.plot.update(sig)
+                    # self.plot.update(sig)
 
             elif self.IsReceiverPlot:
                 self.SimNDT_FD.saveOutput()
                 sig = self.SimNDT_FD.receiver_signals[self.SimNDT_FD.n-1,0]
-                self.plot.data.append(sig)
+                # self.plot.data.append(sig)
 
 
             self.saveOptions(step, idx)
@@ -314,30 +317,27 @@ class EngineController():
 
 
     def _runGLSerial(self, idx):
-
-        DB = self.parent.SimNDT_SnapShots.DB
-        self.parent.GraphicView.setImage(np.float32(self.SimNDT_FD.SV), DB)
         step  = 10
 
-        if self.IsReceiverPlot:
-            SimulationTime = self.parent.SimNDT_Simulation.SimulationTime
-            sig = self.SimNDT_FD.receiver_signals
-            self.plot = PlotInline()
-            self.plot.init(sig, SimulationTime)
-            self.plot.show()
+        # if self.IsReceiverPlot:
+        #     SimulationTime = self.parent.SimNDT_Simulation.SimulationTime
+        #     sig = self.SimNDT_FD.receiver_signals
+        #     self.plot = PlotInline()
+        #     self.plot.init(sig, SimulationTime)
+        #     self.plot.show()
 
         while (self.SimNDT_FD.n < self.TimeSteps):
 
-            if self.parent.StopSimulation:
-                return "Stop"
+            # if self.parent.StopSimulation:
+            #     return "Stop"
 
-            if self.parent.PauseSimulation:
-                while True:
-                    if self.parent.StopSimulation:
-                        return "Stop"
-                    if not self.parent.PauseSimulation:
-                        break
-                    QCoreApplication.processEvents()
+            # if self.parent.PauseSimulation:
+            #     while True:
+            #         if self.parent.StopSimulation:
+            #             return "Stop"
+            #         if not self.parent.PauseSimulation:
+            #             break
+            #         QCoreApplication.processEvents()
 
             self.SimNDT_FD.runSerial()
             self.SimNDT_FD.n+=1
@@ -345,7 +345,7 @@ class EngineController():
 
             if (self.SimNDT_FD.n % step==0):
                 self.SimNDT_FD.runGLSerial()
-                self.parent.GraphicView.updateWithImage(self.SimNDT_FD.SV,self.SimNDT_FD.n*self.SimNDT_FD.dt*1e6)
+                # self.parent.GraphicView.updateWithImage(self.SimNDT_FD.SV,self.SimNDT_FD.n*self.SimNDT_FD.dt*1e6)
 
                 if self.IsReceiverPlot:
                     sig = self.SimNDT_FD.receiver_signals[self.SimNDT_FD.n-1,0]
@@ -357,7 +357,7 @@ class EngineController():
                 self.plot.data.append(sig)
 
 
-            self.saveOptions(step, idx)
+            # self.saveOptions(step, idx)
 
 
 

@@ -2,7 +2,6 @@ import json
 import os
 import sys
 import numpy as np
-from SimNDT.run_setup.SimulationVideo import create_vector_field_video
 from SimNDT.run_setup.runSimulator import openSim, runEngine, saveVideo
 
 def main(json_filepath):
@@ -16,8 +15,8 @@ def main(json_filepath):
     # Run the simulation engine and save the results
     runEngine(simPack)
 
-    # save the simulation video
-    saveVideo(sim_params, simPack)
+    # # save the simulation video
+    # saveVideo(sim_params, simPack)
     
 
 if __name__ == "__main__":

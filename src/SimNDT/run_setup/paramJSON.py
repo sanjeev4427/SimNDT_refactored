@@ -1,9 +1,6 @@
 import json
-import os
-from datetime import datetime
-from collections import OrderedDict
 
-data = OrderedDict({
+data = {
   
   "Scenario": {
       "Width": 100,
@@ -161,7 +158,8 @@ data = OrderedDict({
     "SimulationTime": 5e-05,
     "TimeScale": 1.0,
     "MaxFreq": 1000000.0,
-    "Order": 2
+    "Order": 2,
+    
     },
   
   "Receivers": {
@@ -169,7 +167,7 @@ data = OrderedDict({
   },
   
   "Snapshot" : {
-    "Step": 100,
+    "Step": 1000,
     "Save_filepath": r"C:\Users\Kumar\Nextcloud\Work\GUW\sim_ndt\simndt2-main\simndt2\saved_simulations\numpy_Vx_Vy_2",
     "Filename": "numpy",
     "enableFields": True,
@@ -192,11 +190,8 @@ data = OrderedDict({
       "Save_filepath": r"C:\Users\Kumar\Nextcloud\Work\GUW\sim_ndt\simndt2-main\simndt2\saved_simulations\sim_video",
     }
       
-})
+}
 
-# use python>= 3.7 to keep the ordered dictionary
-folder_path = r"C:\Users\Kumar\Nextcloud\Work\GUW\sim_ndt\batch_processing_simulator\ParamJSON"
-current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-save_path = os.path.join(folder_path, "simndt_params_{current_time}.json".format(current_time=current_time))
-with open(save_path, "w") as f:
-    json.dump(data, f, indent=2, sort_keys=False)
+
+with open("simndt_params.json", "w") as f:
+    json.dump(data, f, indent=2)

@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import json
 import scipy.io
@@ -469,7 +470,8 @@ def SimulationSetup(Scenario, SimNDT_Mat_objs, SimNDT_Transd_objs, Simulation):
         # First pass: Look for non-Intel GPU
         for PlatformAndDevice in PlatformAndDevices:
             platform_name = PlatformAndDevice[0].name
-            device_name = PlatformAndDevice[1].name
+            device_name = cl.device_type.to_string(PlatformAndDevice[1].type)
+            # if want to use intel remove 'not' from the below line
             if 'Intel' not in platform_name and 'GPU' in device_name:
                 preferred_platform = platform_name
                 preferred_device = cl.device_type.to_string(PlatformAndDevice[1].type)
@@ -482,12 +484,17 @@ def SimulationSetup(Scenario, SimNDT_Mat_objs, SimNDT_Transd_objs, Simulation):
                 preferred_device = cl.device_type.to_string(PlatformAndDevice[1].type)
                 break
         
+        
         Simulation.Platform = preferred_platform
         Simulation.Device = preferred_device
     else:
         Simulation.Platform = "Serial"
         Simulation.Device = "CPU"
-        
+    
+    
+    Simulation.Platform = "Serial"
+    Simulation.Device = "CPU"
+    
     print("Assigned Platform: ", Simulation.Platform)
     print("Assig. Device: ", Simulation.Device)
     # calculating dt, dx in simaulation
@@ -724,7 +731,17 @@ def runEngine(simPack):
     # SimNDT_Receivers = Receivers(self.SimNDT_Inspection.Name)
     # SimNDT_Receivers.setReceivers(engine)
 
+def saveVideo(sim_params, simPack):
+    # Save the simulation video
+    sim_data_path = simPack.SnapShots.File_path
+    video_path = sim_params["SimVideo"]["Save_filepath"]
 
+    # If the video path does not exist, create it
+    if not os.path.exists(video_path):
+        os.makedirs(video_path)
+
+    create_vector_field_video(sim_data_path, video_path)
+    
 def openSim_mat_file(mat_filename):
     """
     Loads simulation data from a MATLAB file and sets up the simulation environment based on the loaded data.
