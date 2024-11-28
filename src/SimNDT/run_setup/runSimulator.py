@@ -478,13 +478,22 @@ def SimulationSetup(Scenario, SimNDT_Mat_objs, SimNDT_Transd_objs, Simulation):
                 break
         
         # Second pass: If no non-Intel GPU found, use any available platform
+        # if preferred_platform is None:
+        #     for PlatformAndDevice in PlatformAndDevices:
+        #         preferred_platform = PlatformAndDevice[0].name
+        #         preferred_device = cl.device_type.to_string(PlatformAndDevice[1].type)
+        #         break
+        
         if preferred_platform is None:
             for PlatformAndDevice in PlatformAndDevices:
-                preferred_platform = PlatformAndDevice[0].name
-                preferred_device = cl.device_type.to_string(PlatformAndDevice[1].type)
-                break
-        
-        
+                platform_name = PlatformAndDevice[0].name
+                device_name = PlatformAndDevice[1].name
+                device_type = cl.device_type.to_string(PlatformAndDevice[1].type)
+                if device_type != 'GPU':
+                  preferred_platform = platform_name
+                  preferred_device = device_type
+                  break
+              
         Simulation.Platform = preferred_platform
         Simulation.Device = preferred_device
     else:
@@ -492,8 +501,8 @@ def SimulationSetup(Scenario, SimNDT_Mat_objs, SimNDT_Transd_objs, Simulation):
         Simulation.Device = "CPU"
     
     
-    Simulation.Platform = "Serial"
-    Simulation.Device = "CPU"
+    # Simulation.Platform = "Serial"
+    # Simulation.Device = "CPU"
     
     print("Assigned Platform: ", Simulation.Platform)
     print("Assig. Device: ", Simulation.Device)
